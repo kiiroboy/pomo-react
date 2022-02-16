@@ -1,0 +1,19 @@
+.timer {
+  background-image:  url(./aurora_northern.jpg);
+  height: 80vh;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-color: #172347;
+}
+main {
+  max-width: 340px;
+  margin: 0 auto;
+  position:absolute;
+  top: 30%;
+  left: 50%;
+  text-align: center;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
