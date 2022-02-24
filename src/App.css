@@ -1,19 +1,38 @@
 .timer {
-  background-image:  url(./aurora_northern.jpg);
-  height: 80vh;
+  background-image:  url("./images/temple_gate_sunrise.jpg");
+  height: 100vh;
+  width:100vw;
   background-size: cover;
-  background-position: top center;
+  background-position: center;
   background-repeat: no-repeat;
   background-color: #172347;
 }
+
 main {
-  max-width: 340px;
+  width: 600px;
+  height:600px;
+  max-height: 600px;
   margin: 0 auto;
   position:absolute;
-  top: 30%;
+  top: 40%;
   left: 50%;
   text-align: center;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
+button {
+  margin-top:50px;
+  background-color: transparent;
+  color: rgba(255,255,255,0.8);
+  border:0;
+  display: inline-block;
+  width: 20%;
+  opacity: 0.8;
+  transition:0.2s;
+}
+
+button:hover{
+  opacity: 1;
+  transition:0.5;
+}

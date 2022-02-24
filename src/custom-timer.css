@@ -1,0 +1,16 @@
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: #0ef3c5 !important;
+  stroke-opacity: 0.8;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: #038298 !important;
+  stroke-opacity: 0.2;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  fill: #0ef3c5 !important;
+  font-size: 35px;
+  opacity: 0.8;
+}

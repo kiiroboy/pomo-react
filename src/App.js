@@ -5,15 +5,10 @@ function App() {
     <div>
       <div class="timer">
         <main>
-          <Timer></Timer>
+            <Timer></Timer>
         </main>
       </div>
-
-      <div>
-        
-      </div>
     </div>
-
   );
 }
 
