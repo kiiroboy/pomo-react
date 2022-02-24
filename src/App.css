@@ -1,5 +1,5 @@
 .timer {
-  background-image:  url("./images/temple_gate_sunrise.jpg");
+  background-image:  url("./images/Meteor.svg");
   height: 100vh;
   width:100vw;
   background-size: cover;
@@ -28,11 +28,15 @@ button {
   border:0;
   display: inline-block;
   width: 20%;
-  opacity: 0.8;
+  opacity: 0.5;
   transition:0.2s;
 }
 
 button:hover{
   opacity: 1;
-  transition:0.5;
+  transition:0.8;
+}
+button:active{
+  opacity: 1;
+  transition:0.8s;
 }
