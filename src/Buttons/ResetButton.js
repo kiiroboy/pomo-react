@@ -1,3 +1,4 @@
+import React from 'react';
 function ResetButton(props) {
     return (
         <button {...props}>
@@ -7,5 +8,4 @@ function ResetButton(props) {
         </button>
     );
   }
-  
   export default ResetButton;

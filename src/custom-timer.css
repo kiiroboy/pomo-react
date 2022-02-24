@@ -1,7 +1,9 @@
 
 .CircularProgressbar .CircularProgressbar-path {
   stroke: #0ef3c5 !important;
+  transition: 'stroke-dashoffset 10s ease 0s';
   stroke-opacity: 0.8;
+
 }
 
 .CircularProgressbar .CircularProgressbar-trail {

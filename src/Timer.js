@@ -1,10 +1,11 @@
-import { CircularProgressbar} from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import PlayPauseButton from './Buttons/PlayPauseButton';
 import './custom-timer.css';
 import ResetButton from './Buttons/ResetButton';
 import React from 'react';
-
+import AnimatedCPB from './AnimatedCPB';
+import {easeQuadInOut} from "d3-ease"
 const initial = 10;
 class Timer extends React.Component {
     constructor(props) {
@@ -61,14 +62,17 @@ class Timer extends React.Component {
 
     handlePlayPause = () => {
         if (!this.state.playing) {
+            this.setState({
+                playing: !this.state.playing,
+            });
             this.startTimer();
         } else {
             clearInterval(this.timer);
             this.timer = 0;
+            this.setState({
+                playing: !this.state.playing,
+            });
         }
-        this.setState({
-            playing: !this.state.playing,
-        });
     }
     handleReset = () => {
         this.setState({
@@ -83,7 +87,19 @@ class Timer extends React.Component {
     render() {
         return (
             <div class="core">
-                <CircularProgressbar value={this.state.percent} text={`${this.state.time.m}:${this.state.time.s.toString().padStart(2,'0')}`} strokeWidth={3}/>
+                <AnimatedCPB
+                    valueStart={45}
+                    valueEnd={100}
+                    duration={initial}
+                    easingFunction={easeQuadInOut}
+                    playing={this.state.playing}
+                    >
+                    {value => {
+                        return (
+                            <CircularProgressbar value={value} text={`${this.state.time.m}:${this.state.time.s.toString().padStart(2,'0')}`} strokeWidth={3} styles={buildStyles({pathTransition:"none"})}/>
+                        );
+                    }}
+                </AnimatedCPB>
                 <div>
                 <PlayPauseButton status={this.state.playing} onClick={this.handlePlayPause}/>
                 <ResetButton onClick={this.handleReset}/>
