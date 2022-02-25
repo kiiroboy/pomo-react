@@ -13,13 +13,6 @@ class AnimatedCPB extends React.Component {
         isAnimated: !this.state.isAnimated
       });
   }
-  componentDidUpdate() {
-    console.log("update");
-    if(this.state.isAnimated === false) {
-        this.state.isAnimated = true;
-    }
-    this.render();
-  }
 
   static defaultProps = {
     valueStart: 0
@@ -27,7 +20,7 @@ class AnimatedCPB extends React.Component {
 
   render() {
     if (this.props.reset === true) {
-      this.state.isAnimated = false; 
+      this.state.isAnimated = false;
       return (
         <Animate
           start={() => ({
@@ -36,10 +29,10 @@ class AnimatedCPB extends React.Component {
           })}
           update={() => ({
             value: [
-              this.props.valueStart
+              this.state.isAnimated ? this.props.valueEnd : this.props.valueStart
             ],
             seconds: [
-              this.props.duration 
+              this.state.isAnimated ? 0: this.props.duration 
             ],
             timing: {
               duration: 0
@@ -49,7 +42,6 @@ class AnimatedCPB extends React.Component {
           {({value, seconds}) => this.props.children(value, seconds)}
         </Animate>
       );
-
     }
     return (
       <Animate

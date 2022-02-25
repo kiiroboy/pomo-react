@@ -1,7 +1,6 @@
 
 .CircularProgressbar .CircularProgressbar-path {
   stroke: #0ef3c5 !important;
-  transition: 'stroke-dashoffset 10s ease 0s';
   stroke-opacity: 0.8;
 
 }
@@ -13,6 +12,7 @@
 
 .CircularProgressbar .CircularProgressbar-text {
   fill: #0ef3c5 !important;
-  font-size: 35px;
+  font-size: 130%;
+  align-content:center;
   opacity: 0.8;
 }
