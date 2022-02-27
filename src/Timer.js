@@ -1,4 +1,3 @@
-import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import PlayPauseButton from './Buttons/PlayPauseButton';
 import './custom-timer.css';
@@ -6,6 +5,7 @@ import ResetButton from './Buttons/ResetButton';
 import React from 'react';
 import {Animate} from 'react-move';
 import SettingButton from './Buttons/SettingButton';
+const {CircularProgress} = require("@material-ui/core");
 const initial = 10;
 class Timer extends React.Component {
     constructor(props) {
@@ -115,7 +115,8 @@ class Timer extends React.Component {
                     this.state.currVal = value;
                     this.state.currDur = seconds;
                     return (
-                        <CircularProgressbar value={value} text={`${sec.h.toString()}:${sec.m.toString().padStart(2,'0')}:${sec.s.toString().padStart(2,'0')}`} strokeWidth={3} styles={buildStyles({pathTransition:"none"})}/>
+                         //<CircularProgressbar value={value} text={`${sec.h.toString()}:${sec.m.toString().padStart(2,'0')}:${sec.s.toString().padStart(2,'0')}`} strokeWidth={3} styles={buildStyles({pathTransition:"none"})}/>
+                        <CircularProgress variant='determinate' color='secondary' value={value} size='500px'/>
                     );
 
                 }}
