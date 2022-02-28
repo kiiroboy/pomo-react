@@ -22,34 +22,34 @@
 }
 
 .parent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height:600px;
-  max-height: 600px;
-  margin: 0 auto;
-  position:absolute;
-  top: 40%;
-  left: 50%;
-  text-align: center;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 .child {
   position:absolute;
 }
-.timer_button {
+.timer {
   width: 600px;
   height:600px;
   max-height: 600px;
   margin: 0 auto;
   position:absolute;
-  top: 80%;
-  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  top: 40%;
+  left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.timer_button {
+  display:flex;
+  justify-content: center;
+  clear:both;
+  width: 600px;
+  height:600px;
+  max-height: 600px;
+  position:relative;
+  text-align: center;
 
 }
 .text, .activeInput, .disabledInput {
