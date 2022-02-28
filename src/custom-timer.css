@@ -12,25 +12,58 @@
 
 .CircularProgressbar .CircularProgressbar-text {
   fill: #0ef3c5 !important;
-  font-size: 130%;
+  font-size: 20px;
   align-content:center;
   opacity: 0.9;
 }
 
+.CircularProgressbar {
+  top:-1;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height:600px;
+  max-height: 600px;
+  margin: 0 auto;
+  position:absolute;
+  top: 40%;
+  left: 50%;
+  text-align: center;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.child {
+  position:absolute;
+}
+.timer_button {
+  width: 600px;
+  height:600px;
+  max-height: 600px;
+  margin: 0 auto;
+  position:absolute;
+  top: 80%;
+  left: 50%;
+  text-align: center;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
 .text, .activeInput, .disabledInput {
   color: #0ef3c5;
   font-size: 130px;
   opacity: 1;
 }
-.text {
-  dominant-baseline: middle;
-  text-anchor: middle;
-}
+
 .activeInput{
   width:2ch;
   background: transparent;
   position: relative;
   border: 1px solid #FFF;
+  border: none;
   display: inline-block;
 }
 
@@ -38,6 +71,7 @@
   width:2ch;
   background: transparent;
   position: relative;
+  border: 1px solid #FFF;
   border:none;
   display: inline-block;
 }

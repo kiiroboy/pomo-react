@@ -1,4 +1,4 @@
-.timer {
+.top {
   background-image:  url("./images/Meteor.svg");
   height: 100vh;
   width:100vw;
@@ -8,18 +8,6 @@
   background-color: #172347;
 }
 
-main {
-  width: 600px;
-  height:600px;
-  max-height: 600px;
-  margin: 0 auto;
-  position:absolute;
-  top: 40%;
-  left: 50%;
-  text-align: center;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
 
 button {
   margin-top:50px;
