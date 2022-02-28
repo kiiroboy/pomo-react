@@ -1,3 +1,4 @@
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import PlayPauseButton from './Buttons/PlayPauseButton';
 import './custom-timer.css';
@@ -5,16 +6,16 @@ import ResetButton from './Buttons/ResetButton';
 import React from 'react';
 import {Animate} from 'react-move';
 import SettingButton from './Buttons/SettingButton';
-const {CircularProgress} = require("@material-ui/core");
-const initial = 10;
+let initial = 25;
+
 class Timer extends React.Component {
     constructor(props) {
         super(props);
         this.state={
             playing:false,
-            currVal:0,
-            currDur:initial
         }
+        this.currVal=0;
+        this.currDur=initial;
         this.timeout = undefined;
     }
     secondsToTime(secs){
@@ -36,28 +37,46 @@ class Timer extends React.Component {
 
     handlePlayPause = () => {
         if(!this.state.playing) {
-            this.setState({
-                playing: !this.state.playing
-            })
             this.timeout = setTimeout(()=> {
                 this.handleReset()
-            },this.state.currDur*1000)
-        } else {
+            },this.currDur*1000)
             this.setState({
                 playing: !this.state.playing
             })
+        } else {
             window.clearTimeout(this.timeout)
+            this.setState({
+                playing: !this.state.playing
+            })
         }
     }
+
     handleReset = () => {
+
+        this.currVal = 0;
+        this.currDur = initial;
+        window.clearTimeout(this.timeout)
         this.setState({
             playing: false,
-            currVal: 0,
-            currDur: initial,
         })
-        window.clearTimeout(this.timeout)
     }
-    handleOnBlur = (e) => {
+
+    updateInput(type,value) {
+        let s = (this.currDur%60);
+        let m = Math.floor(this.currDur/60)%60;
+        let h = Math.floor(this.currDur/3600);
+        if (type==="s") {
+            this.currDur = value + 60*m + 3600*h;
+        } else if (type === "m") {
+            this.currDur = s+value*60+3600*h;
+        } else {
+            this.currDur = s + 60*m + 3600*value;
+        }
+        initial = this.currDur;
+        this.setState({});
+    }
+
+    handleOnBlurS = (e) => {
         let res = parseInt(e.target.value);
         if (res > 60) {
             res = 59;
@@ -66,11 +85,11 @@ class Timer extends React.Component {
         } else {
             res = isNaN(parseInt(e.target.value)) ? 0: parseInt(e.target.value);
         }
-        this.setState({
-            currDur: res
-        })
+
+        this.updateInput("s", res)
     }
-    handleKeyDown = (e) => {
+
+    handleKeyDownS = (e) => {
         if (e.key === 'Enter') {
             let res = parseInt(e.target.value);
             if (res > 60) {
@@ -80,44 +99,114 @@ class Timer extends React.Component {
             } else {
                 res = isNaN(parseInt(e.target.value)) ? 0: parseInt(e.target.value);
             }
-            this.setState({
-                currDur: res
-            })
+            this.updateInput("s", res);
         }
-      }
+    }
+    handleOnBlurM = (e) => {
+        let res = parseInt(e.target.value);
+        if (res > 60) {
+            res = 59;
+        } else if (res === 60) {
+            res = 0;
+        } else {
+            res = isNaN(parseInt(e.target.value)) ? 0: parseInt(e.target.value);
+        }
+
+        this.updateInput("m", res)
+    }
+
+    handleKeyDownM = (e) => {
+        if (e.key === 'Enter') {
+            let res = parseInt(e.target.value);
+            if (res > 60) {
+                res = 59;
+            } else if (res === 60) {
+                res = 0;
+            } else {
+                res = isNaN(parseInt(e.target.value)) ? 0: parseInt(e.target.value);
+            }
+            this.updateInput("m", res);
+        }
+    }
+    handleKeyDownH = (e) => {
+        if (e.key === 'Enter') {
+            let res = parseInt(e.target.value);
+            if (res > 60) {
+                res = 59;
+            } else if (res === 60) {
+                res = 0;
+            } else {
+                res = isNaN(parseInt(e.target.value)) ? 0: parseInt(e.target.value);
+            }
+            this.updateInput("h", res);
+        }
+    }
+    handleOnBlurH = (e) => {
+        let res = parseInt(e.target.value);
+        if (res > 60) {
+            res = 59;
+        } else if (res === 60) {
+            res = 0;
+        } else {
+            res = isNaN(parseInt(e.target.value)) ? 0: parseInt(e.target.value);
+        }
+
+        this.updateInput("h", res)
+    }
     render() {
         return (
             <div class="core">
                 <Animate
                 
                 start={() => ({
-                    value: this.state.currVal,
-                    seconds: this.state.currDur
+                    value: this.currVal,
+                    seconds: this.currDur
                 })}
                 update={() => ({
                     value: [
-                        this.state.playing ? 100 : this.state.currVal
+                        this.state.playing ? 100 : this.currVal
                     ],
                     seconds: [
-                        this.state.playing ? 0: this.state.currDur
+                        this.state.playing ? 0: this.currDur
                     ],
                     timing: {
-                        duration: [this.state.playing ? this.state.currDur*1000: 0]
+                        duration: [this.state.playing ? this.currDur*1000: 0]
                     }
-                })}
-                leave={() => ({
-                    value: this.state.currVal,
-                    seconds: this.state.currDur
                 })}
                 >
                 {({value, seconds}) => {
                     let sec = this.secondsToTime(Math.round(seconds));
-                    this.state.currVal = value;
-                    this.state.currDur = seconds;
-                    return (
-                         //<CircularProgressbar value={value} text={`${sec.h.toString()}:${sec.m.toString().padStart(2,'0')}:${sec.s.toString().padStart(2,'0')}`} strokeWidth={3} styles={buildStyles({pathTransition:"none"})}/>
-                        <CircularProgress variant='determinate' color='secondary' value={value} size='500px'/>
-                    );
+                    console.log(sec.s);
+                    if(!this.state.playing) {
+                        return (
+                            <div>
+                                <CircularProgressbar value={value} text={`${sec.h.toString()}:${sec.m.toString().padStart(2,'0')}:${sec.s.toString().padStart(2,'0')}`} strokeWidth={3} styles={buildStyles({pathTransition:"none"})}/>
+                                <label class="text">
+                                    <input class="activeInput" placeholder={`${sec.h.toString().padStart(2,'0')}`} onKeyDown={this.handleKeyDownH} onBlur={this.handleOnBlurH}/>
+                                    :
+                                    <input class="activeInput" placeholder={`${sec.m.toString().padStart(2,'0')}`} onKeyDown={this.handleKeyDownM} onBlur={this.handleOnBlurM}/>
+                                    :
+                                    <input class="activeInput" placeholder={`${sec.s.toString().padStart(2,'0')}`} onKeyDown={this.handleKeyDownS} onBlur={this.handleOnBlurS}/>
+                                </label>
+                            </div> 
+                        );
+                    } else {
+                        this.currVal = value;
+                        this.currDur = seconds;
+                        return (
+                            <div>
+                                <CircularProgressbar value={value} text={`${sec.h.toString()}:${sec.m.toString().padStart(2,'0')}:${sec.s.toString().padStart(2,'0')}`} strokeWidth={3} styles={buildStyles({pathTransition:"none"})}/>
+                                <label class="text">
+                                    <input class="disabledInput" value={`${sec.h.toString().padStart(2,'0')}`} onKeyDown={this.handleKeyDownH} onBlur={this.handleOnBlurH} disabled/>
+                                    :
+                                    <input class="disabledInput" value={`${sec.m.toString().padStart(2,'0')}`} onKeyDown={this.handleKeyDownM} onBlur={this.handleOnBlurM} disabled/>
+                                    :
+                                    <input class="disabledInput" value={`${sec.s.toString().padStart(2,'0')}`} onKeyDown={this.handleKeyDownS} onBlur={this.handleOnBlurS}disabled/>
+                                </label>
+                            </div> 
+                        );
+
+                    }
 
                 }}
                 </Animate>
@@ -126,11 +215,6 @@ class Timer extends React.Component {
                 <ResetButton onClick={this.handleReset}/>
                 <SettingButton></SettingButton>
                 </div>
-                <input
-                    onKeyDown={this.handleKeyDown}
-                    onBlur={this.handleOnBlur}
-                    placeholder="00"
-                />
             </div>
         );
     }

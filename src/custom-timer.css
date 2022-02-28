@@ -14,5 +14,30 @@
   fill: #0ef3c5 !important;
   font-size: 130%;
   align-content:center;
-  opacity: 0.8;
+  opacity: 0.9;
+}
+
+.text, .activeInput, .disabledInput {
+  color: #0ef3c5;
+  font-size: 130px;
+  opacity: 1;
+}
+.text {
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+.activeInput{
+  width:2ch;
+  background: transparent;
+  position: relative;
+  border: 1px solid #FFF;
+  display: inline-block;
+}
+
+.disabledInput{
+  width:2ch;
+  background: transparent;
+  position: relative;
+  border:none;
+  display: inline-block;
 }
