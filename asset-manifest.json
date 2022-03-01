@@ -1,5 +1,5 @@
 {
-  "main.css": "/pomo-react/static/css/main.8c338811.chunk.css",
+  "main.css": "/pomo-react/static/css/main.bfb33c51.chunk.css",
   "main.js": "/pomo-react/static/js/main.b6082a7a.chunk.js",
   "main.js.map": "/pomo-react/static/js/main.b6082a7a.chunk.js.map",
   "runtime~main.js": "/pomo-react/static/js/runtime~main.2e718c4b.js",
@@ -10,9 +10,9 @@
   "static/js/3.76c3d8c6.chunk.js": "/pomo-react/static/js/3.76c3d8c6.chunk.js",
   "static/js/3.76c3d8c6.chunk.js.map": "/pomo-react/static/js/3.76c3d8c6.chunk.js.map",
   "index.html": "/pomo-react/index.html",
-  "precache-manifest.1a68273675fb88219116068f20dcfa65.js": "/pomo-react/precache-manifest.1a68273675fb88219116068f20dcfa65.js",
+  "precache-manifest.6ba52eb05edc9ce3214797e8275ef6f2.js": "/pomo-react/precache-manifest.6ba52eb05edc9ce3214797e8275ef6f2.js",
   "service-worker.js": "/pomo-react/service-worker.js",
   "static/css/2.551a4ea1.chunk.css.map": "/pomo-react/static/css/2.551a4ea1.chunk.css.map",
-  "static/css/main.8c338811.chunk.css.map": "/pomo-react/static/css/main.8c338811.chunk.css.map",
+  "static/css/main.bfb33c51.chunk.css.map": "/pomo-react/static/css/main.bfb33c51.chunk.css.map",
   "static/media/App.css": "/pomo-react/static/media/Meteor.1da8e478.svg"
 }
