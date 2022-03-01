@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "7102d581e746390d396f",
-    "url": "/pomo-react/static/css/main.c75ace76.chunk.css"
+    "revision": "b7bd6a70b47af1c0b626",
+    "url": "/pomo-react/static/css/main.f4e9263c.chunk.css"
   },
   {
-    "revision": "7102d581e746390d396f",
+    "revision": "b7bd6a70b47af1c0b626",
     "url": "/pomo-react/static/js/main.b6082a7a.chunk.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/pomo-react/static/media/Meteor.1da8e478.svg"
   },
   {
-    "revision": "526e1f4bfbcdc2536ef5852b61935075",
+    "revision": "95f60e6a955fbe15e8d50923f4ce2563",
     "url": "/pomo-react/index.html"
   }
 ];
